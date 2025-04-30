@@ -76,7 +76,7 @@ void main() async {
       size: const Size(1280, 720),
       minimumSize: const Size(640, 360),
       center: true,
-      title: 'PathPlanner',
+      title: 'PedroPlanner',
       titleBarStyle:
           Platform.isMacOS ? TitleBarStyle.normal : TitleBarStyle.hidden,
     );
@@ -148,7 +148,7 @@ class _PathPlannerState extends State<PathPlanner> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'PathPlanner',
+      title: 'PedroPlanner',
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: _teamColor,

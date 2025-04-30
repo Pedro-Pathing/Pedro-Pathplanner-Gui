@@ -6,11 +6,7 @@ import 'package:image_size_getter/file_input.dart';
 import 'package:image_size_getter/image_size_getter.dart';
 
 enum OfficialField {
-  rapidReact,
-  chargedUp,
-  crescendo,
-  reefscape,
-  reefscapeAnnotated
+  intoTheDeep
 }
 
 class FieldImage {
@@ -24,70 +20,27 @@ class FieldImage {
   static List<FieldImage>? _officialFields;
 
   static final FieldImage defaultField =
-      FieldImage.official(OfficialField.reefscape);
+      FieldImage.official(OfficialField.intoTheDeep);
 
   static List<FieldImage> offialFields() {
     _officialFields ??= [
-      FieldImage.official(OfficialField.rapidReact),
-      FieldImage.official(OfficialField.chargedUp),
-      FieldImage.official(OfficialField.crescendo),
-      FieldImage.official(OfficialField.reefscape),
-      FieldImage.official(OfficialField.reefscapeAnnotated),
+      FieldImage.official(OfficialField.intoTheDeep),
+      FieldImage.official(OfficialField.intoTheDeep),
     ];
     return _officialFields!;
   }
 
   FieldImage.official(OfficialField field) {
     switch (field) {
-      case OfficialField.rapidReact:
+      case OfficialField.intoTheDeep:
         image = Image.asset(
-          'images/field22.png',
-          fit: BoxFit.contain,
-          filterQuality: FilterQuality.medium,
-        );
-        defaultSize = const ui.Size(3240, 1620);
-        pixelsPerMeter = 196.85;
-        name = 'Rapid React';
-        break;
-      case OfficialField.chargedUp:
-        image = Image.asset(
-          'images/field23.png',
-          fit: BoxFit.contain,
-          filterQuality: FilterQuality.medium,
-        );
-        defaultSize = const ui.Size(3256, 1578);
-        pixelsPerMeter = 196.85;
-        name = 'Charged Up';
-        break;
-      case OfficialField.crescendo:
-        image = Image.asset(
-          'images/field24.png',
-          fit: BoxFit.contain,
-          filterQuality: FilterQuality.medium,
-        );
-        defaultSize = const ui.Size(3256, 1616);
-        pixelsPerMeter = 196.85;
-        name = 'Crescendo';
-        break;
-      case OfficialField.reefscape:
-        image = Image.asset(
-          'images/field25.png',
+          'images/itd_field.png',
           fit: BoxFit.contain,
           filterQuality: FilterQuality.medium,
         );
         defaultSize = const ui.Size(3510, 1610);
         pixelsPerMeter = 200.0;
-        name = 'Reefscape';
-        break;
-      case OfficialField.reefscapeAnnotated:
-        image = Image.asset(
-          'images/field25-annotated.png',
-          fit: BoxFit.contain,
-          filterQuality: FilterQuality.medium,
-        );
-        defaultSize = const ui.Size(3510, 1610);
-        pixelsPerMeter = 200.0;
-        name = 'Reefscape (Annotated)';
+        name = 'Into The Deep (MeepMeep))';
         break;
     }
     isCustom = false;

@@ -19,7 +19,7 @@ class WelcomePage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         titleWidget: const Text(
-          'PathPlanner',
+          'Pedro Planner',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
         ),
         automaticallyImplyLeading: false,
@@ -56,7 +56,7 @@ class WelcomePage extends StatelessWidget {
                           .scaleXY()
                           .shimmer(delay: 2.seconds, duration: 300.ms),
                       Text(
-                        'PathPlanner',
+                        'Pedro Planner',
                         style: TextStyle(
                             fontSize: 48, color: colorScheme.onSurface),
                       )

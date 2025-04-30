@@ -41,11 +41,8 @@ class _AppSettingsState extends State<AppSettings> {
   late num _defaultMaxAngVel;
   late num _defaultMaxAngAccel;
   late num _defaultNominalVoltage;
-  late bool _holonomicMode;
-  late bool _hotReload;
   late FieldImage _selectedField;
   late Color _teamColor;
-  late String _pplibClientHost;
 
   @override
   void initState() {
@@ -63,15 +60,9 @@ class _AppSettingsState extends State<AppSettings> {
     _defaultNominalVoltage =
         widget.prefs.getDouble(PrefsKeys.defaultNominalVoltage) ??
             Defaults.defaultNominalVoltage;
-    _holonomicMode =
-        widget.prefs.getBool(PrefsKeys.holonomicMode) ?? Defaults.holonomicMode;
-    _hotReload = widget.prefs.getBool(PrefsKeys.hotReloadEnabled) ??
-        Defaults.hotReloadEnabled;
     _selectedField = widget.selectedField;
     _teamColor =
         Color(widget.prefs.getInt(PrefsKeys.teamColor) ?? Defaults.teamColor);
-    _pplibClientHost = widget.prefs.getString(PrefsKeys.ntServerAddress) ??
-        Defaults.ntServerAddress;
   }
 
   @override
@@ -205,81 +196,6 @@ class _AppSettingsState extends State<AppSettings> {
               Expanded(child: _buildFieldImageDropdown(context)),
               const SizedBox(width: 8),
               Expanded(child: _buildThemeColorPicker(context)),
-            ],
-          ),
-          const SizedBox(height: 2),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text('PPLib Telemetry:'),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  Expanded(
-                    child: _buildTextField(
-                      context,
-                      'roboRIO IP (10.TE.AM.2)',
-                      (value) {
-                        // Check if valid IP
-                        try {
-                          Uri.parseIPv4Address(value);
-
-                          widget.prefs
-                              .setString(PrefsKeys.ntServerAddress, value);
-                          setState(() {
-                            _pplibClientHost = value;
-                          });
-                          widget.onSettingsChanged();
-                        } catch (_) {
-                          setState(() {});
-                        }
-                      },
-                      _pplibClientHost,
-                      null,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 6),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text('Additional Options:'),
-              const SizedBox(height: 8),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  FilterChip.elevated(
-                    label: const Text('Holonomic Mode'),
-                    selected: _holonomicMode,
-                    backgroundColor: colorScheme.surfaceContainerHigh,
-                    onSelected: (value) {
-                      widget.prefs.setBool(PrefsKeys.holonomicMode, value);
-                      setState(() {
-                        _holonomicMode = value;
-                      });
-                      widget.onSettingsChanged();
-                    },
-                  ),
-                  FilterChip.elevated(
-                    label: const Text('Hot Reload'),
-                    selected: _hotReload,
-                    backgroundColor: colorScheme.surfaceContainerHigh,
-                    onSelected: (value) {
-                      widget.prefs.setBool(PrefsKeys.hotReloadEnabled, value);
-                      setState(() {
-                        _hotReload = value;
-                      });
-                      widget.onSettingsChanged();
-                    },
-                  ),
-                ],
-              ),
             ],
           ),
         ],

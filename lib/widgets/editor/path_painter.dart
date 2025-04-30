@@ -559,7 +559,7 @@ class PathPainter extends CustomPainter {
           z.fieldPosition, scale, fieldImage);
 
       canvas.drawCircle(location,
-          PathPainterUtil.uiPointSizeToPixels(25, scale, fieldImage), paint);
+          PathPainterUtil.uiPointSizeToPixels(40, scale, fieldImage), paint);
 
       paint.style = PaintingStyle.stroke;
       canvas.drawCircle(location,
@@ -577,7 +577,7 @@ class PathPainter extends CustomPainter {
           z.fieldPosition, scale, fieldImage);
 
       canvas.drawCircle(location,
-          PathPainterUtil.uiPointSizeToPixels(25, scale, fieldImage), paint);
+          PathPainterUtil.uiPointSizeToPixels(40, scale, fieldImage), paint);
 
       paint.style = PaintingStyle.stroke;
       canvas.drawCircle(location,
